@@ -1,0 +1,97 @@
+This package contains pythons files that illustrate application of Four Color Theorem by plotting and coloring several graphs.
+
+1. Graph Artist:
+    This program calls graph generator functions from GraphGenrator.py and plots them out using matplotlib pyplot.
+    It then uses a simple algorithm to color all the vertices such that no two adjacent vertices have same color.
+
+    The program currently generates and plots the following graphs:
+        a. Dodecahedron
+        b. Petersen Graph
+        c. Cubical Graph
+
+    Dependencies:
+        a. matplotlib.pyplot
+        b. networkx
+        c. geopandas
+        d. GraphGenerator.py
+
+    ## GraphGenerator:
+        This Python program utilizes the NetworkX library to generate and represent specific graphs. 
+        Functions:
+            a. generateDodecahedron
+            b. generatePetersen
+            c. generateCubic
+        All three functions reutrn netowrkx graph.
+
+        Dependencies:
+            a. networkx
+
+2. WorldMap:
+    This program loads a GeoJSON file containing world map data and generates it in form of a network graph using networkx library. All the countries are vertices and have an edge with their neighbours.
+    It uses the same algorithm to color the vertices.
+
+    Note:-
+        a. "world.geojson" file is being loaded twice in this program. Please ensure the abosolute path to "world.geojson" is mentioned properly. A copy of "world.geojson" is stored in this directory.
+    
+    Functions:
+        a. worldmap:
+            Loads a world map dataset and creates a graph using GeoPandas and NetworkX.
+            Returns: NetworkX Graph.
+
+        b. draw_graph:
+            Visualizes a graph using Matplotlib with nodes colored based on input.
+            Parameters:
+                mygraph: NetworkX Graph.
+                nodecolor: List of node colors.
+        c. print_nodes:
+            Prints the nodes present in the graph.
+            Parameters:
+            graph: NetworkX Graph.
+        d. set_color_keys:
+            Initializes a key-color relation for each node in the graph.
+            Parameters:
+                graph: NetworkX Graph.
+            Returns: 
+                Dictionary mapping nodes to colors.
+        e. set_graph_color:
+            Returns a list of colors corresponding to the nodes in the graph.
+            Parameters:
+                graph: NetworkX Graph.
+                keyColor: Dictionary mapping nodes to colors.
+            Returns: 
+            List of node colors.
+        f. mygraphmain()
+            Checks if a graph is planar and visualizes it with colored nodes.
+            It calls all the functions in this program.
+            Parameters:
+            mygraph: NetworkX Graph.
+    Dependencies:
+        a. networkx
+        b. matplotlib.pyplot
+        c. geopandas
+
+3. USAMap:
+    This program loads a GeoJSON file containing USA map data and generates it in the form of a network graph using the NetworkX library. Each state is a vertex, and edges connect neighboring states. The program applies the same algorithm to color the vertices.
+    
+    Note:-
+        The "states.geojson" file is being loaded twice in this program. Ensure the absolute path to "states.geojson" is correctly specified. A copy of "states.geojson" is stored in this directory.
+    
+    Functions:
+        */Same as WorldMap/*
+    
+    Dependencies:
+        a. networkx
+        b. matplotlib.pyplot
+        c. geopandas
+
+## Algorithm:
+    1. Initialize the color assignment dictionary with all colors set to zero.
+    2. Iterate through each node in the graph:
+        a. Identify the colors of neighboring nodes.
+        b. Assign the first available color from a predefined set (basecolors) that is not present in the neighbors.
+    3. Assign display colors to nodes based on the colors obtained from keyColor.
+
+## GEOJson source:
+    - https://exploratory.io/map
+    - License MIT
+    - © 2023 Exploratory, Inc.
